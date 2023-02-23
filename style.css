@@ -11,6 +11,10 @@
   background: #555;
 }
 
+:root{
+  --theme-color: #004d40;
+}
+
 
 body {
   font-family: 'Roboto';
@@ -20,6 +24,7 @@ body {
 
 
 .btn{
+  position: relative;
   padding: 10px 15px;
   font-size: 1.25rem;
   border-radius: 7.5px;
@@ -31,8 +36,24 @@ body {
   filter: brightness(75%);
 }
 
-.fa-solid{
+.btn > .popup{
+  visibility: hidden;
+  position: absolute;
+  top: -35px;
+  right: -32.5px;
+  font-size: 1rem;
+  border-radius: 5px;
+  width: max-content;
+
+  padding: 5px 10px;
   color: white;
+  font-weight: bold; 
+  background-color: var(--theme-color);
+  font-family: 'Roboto';
+}
+.btn > .popup:hover{
+  cursor: default;
+  filter:none;
 }
 
 
@@ -77,22 +98,22 @@ body {
 
 .profile{
   display: grid;
-  gap: 20px;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: start;
 }
 
 
 .fa-rotate-right{
-  color: #004d40;
+  color: var(--theme-color);
 }
 .reload-btn{
   background-color: transparent;
-  border: 2px solid #004d40;
+  border: 2px solid var(--theme-color);
   padding: 8px 13px;
 }
 .download-btn, .clear-btn, .upload-btn{
-  background-color: #004d40;
+  color: white;
+  background-color: var(--theme-color);
 }
 
 
@@ -101,7 +122,7 @@ body {
 .profile img {
   position: relative;
   display: block;
-  margin: 40px auto;
+  margin: 20px auto;
   padding: 7.5px;
   border-radius: 50%;
   box-shadow: 0 2.5px 20px 5px rgba(0, 0, 0, 0.2);
@@ -156,11 +177,4 @@ body {
 
 .friends {
   padding: 20px;
-}
-
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
 }

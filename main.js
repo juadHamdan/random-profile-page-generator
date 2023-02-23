@@ -24,7 +24,7 @@ class PageData{
             renderer.renderMainUser(mainUser)
         })
         getAbout().then(about => {
-            this.about = renderer.renderAbout(about)
+            this.about = about
             renderer.renderAbout(about)
         })
         getFavoriteQuoteData().then(favoriteQuoteData => {
@@ -49,7 +49,7 @@ class PageData{
         const mainUser = JSON.parse(localStorage.getItem(MAIN_USER_STR))
         renderer.renderMainUser(mainUser)
     
-        const about = localStorage.getItem(ABOUT_STR)
+        const about = JSON.parse(localStorage.getItem(ABOUT_STR))
         renderer.renderAbout(about)
     
         const favoriteQuoteData = JSON.parse(localStorage.getItem(FAVORITE_QUOTE_DATA_STR))
@@ -64,7 +64,7 @@ class PageData{
 
     savePageDataToStorage(){
         localStorage.setItem(MAIN_USER_STR, JSON.stringify(this.mainUser))
-        localStorage.setItem(ABOUT_STR, this.about)
+        localStorage.setItem(ABOUT_STR, JSON.stringify(this.about))
         localStorage.setItem(FAVORITE_QUOTE_DATA_STR, JSON.stringify(this.favoriteQuoteData))
         localStorage.setItem(POKEMON_DATA_STR, JSON.stringify(this.pokemonData))
         localStorage.setItem(FRIENDS_STR, JSON.stringify(this.friends))
@@ -78,21 +78,36 @@ loadPageFromStorage ? pageData.loadPageDataFromStorage() : pageData.loadNewPage(
 
 
 
-function reloadPage(){
+function loadNewPageData(){
+    localStorage.setItem(LOAD_PAGE_FROM_STORAGE_STR, JSON.stringify(false))
     location.reload();
 }
 
-function savePageData(){
+function savePageDataToStorage(){
     pageData.savePageDataToStorage()
+    localStorage.setItem("page-data-saved", JSON.stringify(true))
+    $(".clear-btn > .popup").css('visibility', 'hidden')
+    $(".download-btn > .popup").css('visibility', 'visible')
+    $(".download-btn > .popup").text('Profile Saved.')
 }
 
-function uploadPageData(){
+function loadPageDataFromStorage(){
+    if(!JSON.parse(localStorage.getItem("page-data-saved"))){
+        $(".upload-btn > .popup").css('visibility', 'visible')
+        $(".upload-btn > .popup").text('Save Profile First.')
+        return
+    }
+    $(".upload-btn > .popup").css('visibility', 'hidden')
     localStorage.setItem(LOAD_PAGE_FROM_STORAGE_STR, JSON.stringify(true))
-    reloadPage()
+    location.reload();
 }
 
 function clearLocalStorage(){
     localStorage.clear()
+    localStorage.setItem("page-data-saved", JSON.stringify(false))
+    $(".download-btn > .popup").css('visibility', 'hidden')
+    $(".clear-btn > .popup").css('visibility', 'visible')
+    $(".clear-btn > .popup").text('Profile Deleted.')
 }
 
 
