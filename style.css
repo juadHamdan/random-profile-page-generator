@@ -61,6 +61,7 @@ body {
 
 
 .header-text{
+  color: white;
   font-size: 1.5rem;
   font-family: 'Josefin Sans';
 }
@@ -82,7 +83,19 @@ body {
 .profile-container {
   position: relative;
   padding: 25px 50px 25px 50px;
-  height: max(600px, 65vh);
+  height: max(650px, 65vh);
+}
+
+.profile-background{
+  display: flex;
+  justify-self: center;
+  border-radius: 60px 0 0 0;
+  position: absolute;
+  top: 50px;
+  z-index: -1;
+  width: 90%;
+  height: 220px;
+  background-color: var(--theme-color);
 }
 
 .profile-container h2 {
@@ -92,8 +105,8 @@ body {
 
 .profile-container .buttons{
   position: absolute;
-  right: 50px;
-  bottom: 25px;
+  right: 175px;
+  bottom: 125px;
 }
 
 .profile{
@@ -138,7 +151,7 @@ body {
 
 
 .about{
-  padding: 5px;
+  padding: 10px;
   word-wrap: break-word;
   height: max(400px, 50vh);
   overflow-y: scroll;
@@ -176,5 +189,17 @@ body {
 
 
 .friends {
-  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+  padding: 10px 50px;
+  border-radius: 20px 20px 0 0 ;
+  width: max-content;
+  background-color: var(--theme-color);
+  margin-left: -10px;
+}
+
+.friend{
+  color: white;
+  padding: 5px;
 }
