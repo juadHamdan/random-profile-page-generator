@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>RUPG</title>
+</head>
+<body>
+    <section class="profile-container">
+      <p class="header header-text">Profile</p>
+      <div class="email header-text">
+        <script id="email-template" type="text/x-handlebars-template">   
+          {{email}}
+        </script>
+      </div>
+      <div class="profile">
+
+        <div class="buttons">
+          <button class="btn clear-btn" onclick="clearLocalStorage()">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+          <button class="btn reload-btn" onclick="reloadPage()">
+            <i class="fa-solid fa-rotate-right"></i>
+          </button>
+          <button class="btn download-btn" onclick="savePageData()">
+            <i class="fa-solid fa-download"></i>
+          </button>
+          <button class="btn upload-btn" onclick="uploadPageData()">
+            <i class="fa-solid fa-upload"></i>
+          </button>
+        </div>
+
+        <div class="about">
+          <p class="header-text">About me</p>
+          <script id="about-template" type="text/x-handlebars-template">   
+            {{about}}
+          </script>
+        </div>
+
+        <script id="main-user-template" type="text/x-handlebars-template">  
+          <img src={{imageUrl}} alt="My Profile Picture" width="150" height="150">
+          </img>
+          <div class="details">
+            <p class="header-text">Details</p> 
+              <strong>Name:</strong>
+              <div>{{firstName}} {{lastName}}</div>
+              <strong>Age:</strong> 
+              <div>{{age}}</div>
+              <strong>Location:</strong> 
+              <div>{{state}}, {{country}}</div>
+            </script>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <hr/>
+
+    <div class="quote">
+      <h4 class="header-text">Favorite Quote</h4>
+      <script id="quote-template" type="text/x-handlebars-template">   
+        <blockquote>"{{quote}}"</blockquote>
+        <cite> - {{author}}</cite>
+      </script>
+    </div>
+    <hr/>
+
+    <div class="pokemon">
+      <script id="pokemon-template" type="text/x-handlebars-template">
+        <h5 class="header-text">Favorite Pokemon:</h5>
+        <img src={{imageUrl}} alt="My Favorite Pokemon" width="100" height="100">
+        <p>- {{name}}</p>
+      </script>
+    </div>
+    <hr/>
+
+    <section class="friends">
+      <script id="friends-template" type="text/x-handlebars-template">
+        <h2 class="header-text">Friends</h2>
+        <ul>
+          {{#each friends}}
+            <li>{{firstName}} {{lastName}}</li>
+          {{/each}}
+        </ul>
+      </script>
+    </section>
+
+    <footer>
+      <p>&copy; 2023</p>
+    </footer>
+
+    <script src="Model.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="APIManager.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

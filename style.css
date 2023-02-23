@@ -1,0 +1,166 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: none;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+body {
+  font-family: 'Roboto';
+  letter-spacing: 1px;
+  word-spacing: 2px;
+}
+
+
+.btn{
+  padding: 10px 15px;
+  font-size: 1.25rem;
+  border-radius: 7.5px;
+  border: none;
+}
+
+.btn:hover{
+  cursor: pointer;
+  filter: brightness(75%);
+}
+
+.fa-solid{
+  color: white;
+}
+
+
+
+
+
+.header-text{
+  font-size: 1.5rem;
+  font-family: 'Josefin Sans';
+}
+
+.header{
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.email{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  color: darkgray;
+}
+
+.profile-container {
+  position: relative;
+  padding: 25px 50px 25px 50px;
+  height: max(600px, 65vh);
+}
+
+.profile-container h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-container .buttons{
+  position: absolute;
+  right: 50px;
+  bottom: 25px;
+}
+
+.profile{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+}
+
+
+.fa-rotate-right{
+  color: #004d40;
+}
+.reload-btn{
+  background-color: transparent;
+  border: 2px solid #004d40;
+  padding: 8px 13px;
+}
+.download-btn, .clear-btn, .upload-btn{
+  background-color: #004d40;
+}
+
+
+
+
+.profile img {
+  position: relative;
+  display: block;
+  margin: 40px auto;
+  padding: 7.5px;
+  border-radius: 50%;
+  box-shadow: 0 2.5px 20px 5px rgba(0, 0, 0, 0.2);
+}
+
+.details{
+  padding: 10px;
+}
+
+.details div{
+  margin: 15px 0;
+}
+
+
+.about{
+  padding: 5px;
+  word-wrap: break-word;
+  height: max(400px, 50vh);
+  overflow-y: scroll;
+}
+
+
+.quote {
+  padding: 0 20px 20px 20px;
+}
+
+.quote > .header-text{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 0 0;
+}
+
+.quote blockquote {
+  font-style: italic;
+}
+
+.quote cite {
+  display: block;
+  margin-top: 10px;
+}
+
+
+
+.pokemon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+
+
+.friends {
+  padding: 20px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
