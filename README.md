@@ -1,4 +1,8 @@
-﻿# Random User 
+﻿# Random Profile Page Generator
+
+### Use of promises using multiple APIs
+### Use of handlebars, conditional rendering 
+
 Demo: https://juadhamdan.github.io/javascript-promises-api-rupg-project/
 
 
