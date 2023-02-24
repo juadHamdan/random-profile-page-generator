@@ -192,14 +192,34 @@ body {
   position: fixed;
   bottom: 0;
   right: 10px;
-  padding: 10px 50px;
+  padding: 5px 75px 0 50px;
   border-radius: 20px 20px 0 0 ;
   width: max-content;
   background-color: var(--theme-color);
   margin-left: -10px;
 }
 
+.friends .fa-solid{
+  position: absolute;
+  top: 17.5px;
+  right: 25px;
+  color: white;
+  font-size: 2rem;
+  padding: 5px;
+}
+
+.friends .fa-solid:hover{
+  cursor: pointer;
+  filter: brightness(50%);
+}
+
 .friend{
   color: white;
   padding: 5px;
+}
+
+
+
+@media (min-width: 900px) {
+  
 }

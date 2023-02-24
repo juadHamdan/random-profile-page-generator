@@ -15,7 +15,7 @@ class PageData{
         this.about = ""
         this.favoriteQuoteData = {}
         this.pokemonData = {}
-        this.friends = []
+        this.friendsData = {friends: [], showFriends: true}
     }
     
     loadNewPage(){
@@ -37,12 +37,23 @@ class PageData{
         })
         for(let i = 0; i < NUM_OF_FRIENDS; i++){
             getFriend().then(friend => {
-                this.friends.push(friend)
-                if(this.friends.length === NUM_OF_FRIENDS){
-                    renderer.renderFriends(this.friends)
+                const friends = this.friendsData.friends
+                friends.push(friend)
+                if(friends.length === NUM_OF_FRIENDS){
+                    renderer.renderFriendsData(this.friendsData)
                 }
             })
         }
+    }
+
+    hideFriends(){
+        renderer.hideFriends()
+        renderer.renderFriendsData({friends: [], showFriends: false})
+    }
+
+    showFriends(){
+        renderer.showFriends()
+        renderer.renderFriendsData({friends: this.friendsData.friends, showFriends: true})
     }
 
     loadPageDataFromStorage(){
@@ -58,8 +69,8 @@ class PageData{
         const pokemonData = JSON.parse(localStorage.getItem(POKEMON_DATA_STR))
         renderer.renderPokemonData(pokemonData)
     
-        const friends = JSON.parse(localStorage.getItem(FRIENDS_STR))
-        renderer.renderFriends(friends)
+        const friendsData = JSON.parse(localStorage.getItem(FRIENDS_STR))
+        renderer.renderFriends(friendsData)
     }
 
     savePageDataToStorage(){
@@ -67,7 +78,7 @@ class PageData{
         localStorage.setItem(ABOUT_STR, JSON.stringify(this.about))
         localStorage.setItem(FAVORITE_QUOTE_DATA_STR, JSON.stringify(this.favoriteQuoteData))
         localStorage.setItem(POKEMON_DATA_STR, JSON.stringify(this.pokemonData))
-        localStorage.setItem(FRIENDS_STR, JSON.stringify(this.friends))
+        localStorage.setItem(FRIENDS_STR, JSON.stringify(this.friendsData))
     }
 }
 
@@ -111,9 +122,10 @@ function clearLocalStorage(){
 }
 
 
-/*
-$(".some-thing").on("click", function () {
-    let newDataPromise = apiManager.fetch()
-    renderer.render(newDataPromise)
-})
-*/
+function hideFriends(){
+    pageData.hideFriends()
+}
+
+function showFriends(){
+    pageData.showFriends()
+}

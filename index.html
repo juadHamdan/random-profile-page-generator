@@ -68,18 +68,34 @@
 
     <hr/>
 
+
     <div class="friends">
       <script id="friends-template" type="text/x-handlebars-template">
-        <h2 class="header-text">Friends</h2>
-        <ul>
-          {{#each friends}}
-            <div class="friend">
-              <li>{{firstName}} {{lastName}}</li>
-            </div>
-          {{/each}}
-        </ul>
+        {{#if showFriends}}
+
+          <div class="friends-active">
+            <i class="fa-solid fa-caret-down" onclick="hideFriends()"></i>
+            <h2 class="header-text">Friends</h2>
+            <ul>
+              {{#each friends}}
+                <div class="friend">
+                  <li>{{firstName}} {{lastName}}</li>
+                </div>
+              {{/each}}
+            </ul>
+          </div>
+
+        {{else}}
+          <div class="friends-passive">
+            <h2 class="header-text">Friends</h2>
+            <i class="fa-solid fa-caret-up" onclick="showFriends()"></i>
+          </div>
+        {{/if}}
       </script>
     </div>
+
+
+
 
     <div class="pokemon">
       <script id="pokemon-template" type="text/x-handlebars-template">

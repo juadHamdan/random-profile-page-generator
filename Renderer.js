@@ -5,6 +5,7 @@ class Renderer {
         let newHTML = template(templateObject);
         $(selectorNameToAppend).append(newHTML); 
     }
+
     renderEmail(email) {
         this.handleBarHelper('#email-template', email, '.email')
     }
@@ -15,8 +16,15 @@ class Renderer {
         this.handleBarHelper('#main-user-template', user, '.profile')
         this.renderEmail({email: user.email})
     }
-    renderFriends(friends) {
-        this.handleBarHelper('#friends-template', {'friends': friends}, '.friends')
+    renderFriendsData(friendsData) {
+        this.handleBarHelper('#friends-template', friendsData, '.friends')
+    }
+    hideFriends(){
+        $('.friends-active').empty()
+
+    }
+    showFriends(){
+        $('.friends-passive').empty()
     }
     renderFavoriteQuoteData(favoriteQuoteData){
         this.handleBarHelper('#quote-template', favoriteQuoteData, '.quote')
