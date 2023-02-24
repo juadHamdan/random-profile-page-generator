@@ -6,6 +6,11 @@ const FAVORITE_QUOTE_DATA_STR = "favorite_quote_data"
 const POKEMON_DATA_STR = "pokemon_data"
 const FRIENDS_STR = "friends"
 
+const downloadPopupJqueryObject = $(".download-btn > .popup")
+const uploadPopupJqueryObject = $(".upload-btn > .popup")
+const clearPopupJqueryObject = $(".clear-btn > .popup")
+
+
 const apiManager = new APIManager()
 const renderer = new Renderer()
 
@@ -15,7 +20,7 @@ class PageData{
         this.about = ""
         this.favoriteQuoteData = {}
         this.pokemonData = {}
-        this.friendsData = {friends: [], showFriends: true}
+        this.friendsData = {friends: [], showFriends: false}
     }
     
     loadNewPage(){
@@ -94,31 +99,35 @@ function loadNewPageData(){
     location.reload();
 }
 
+function showTimedPopup(jqueryObject, timer){
+    jqueryObject.css('visibility', 'visible')
+
+    setTimeout(() => {
+        jqueryObject.css('visibility', 'hidden')
+    }, timer)
+}
+
 function savePageDataToStorage(){
     pageData.savePageDataToStorage()
     localStorage.setItem("page-data-saved", JSON.stringify(true))
-    $(".clear-btn > .popup").css('visibility', 'hidden')
-    $(".download-btn > .popup").css('visibility', 'visible')
-    $(".download-btn > .popup").text('Profile Saved.')
+
+    showTimedPopup(downloadPopupJqueryObject, 1000)
 }
 
 function loadPageDataFromStorage(){
     if(!JSON.parse(localStorage.getItem("page-data-saved"))){
-        $(".upload-btn > .popup").css('visibility', 'visible')
-        $(".upload-btn > .popup").text('Save Profile First.')
+        showTimedPopup(uploadPopupJqueryObject, 2000)
         return
     }
-    $(".upload-btn > .popup").css('visibility', 'hidden')
+
     localStorage.setItem(LOAD_PAGE_FROM_STORAGE_STR, JSON.stringify(true))
     location.reload();
 }
 
 function clearLocalStorage(){
     localStorage.clear()
+    showTimedPopup(clearPopupJqueryObject, 1000)
     localStorage.setItem("page-data-saved", JSON.stringify(false))
-    $(".download-btn > .popup").css('visibility', 'hidden')
-    $(".clear-btn > .popup").css('visibility', 'visible')
-    $(".clear-btn > .popup").text('Profile Deleted.')
 }
 
 

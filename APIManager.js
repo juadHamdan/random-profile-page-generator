@@ -24,6 +24,6 @@ class APIManager {
         })
     }
     fetchAbout() {
-        return $.get('https://baconipsum.com/api/?type=all-meat&paras=1')
+        return $.get('https://baconipsum.com/api/?type=all-meat')
     }
 }

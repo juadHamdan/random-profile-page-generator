@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>RUPG</title>
+    <title>Random User Page Generator</title>
 </head>
 <body>
     <section class="profile-container">
@@ -23,29 +23,13 @@
       </div>
       <div class="profile">
 
-        <div class="buttons">
-          <button class="btn clear-btn" onclick="clearLocalStorage()">
-            <i class="fa-solid fa-trash"></i>
-            <div class="popup"></div>
-          </button>
-          <button class="btn reload-btn" onclick="loadNewPageData()">
-            <i class="fa-solid fa-rotate-right"></i>
-            <div class="popup"></div>
-          </button>
-          <button class="btn download-btn" onclick="savePageDataToStorage()">
-            <i class="fa-solid fa-download"></i>
-            <div class="popup"></div>
-          </button>
-          <button class="btn upload-btn" onclick="loadPageDataFromStorage()">
-            <i class="fa-solid fa-upload"></i>
-            <div class="popup"></div>
-          </button>
-        </div>
-
         <div class="about">
           <p class="header-text">About me</p>
           <script id="about-template" type="text/x-handlebars-template">   
-            {{about}}
+
+            <div class="about-text">
+              {{about}}
+            </div>
           </script>
         </div>
 
@@ -53,14 +37,31 @@
           <img src={{imageUrl}} alt="My Profile Picture" width="150" height="150">
           <div class="details">
             <p class="header-text">Details</p> 
-              <strong>Name:</strong>
-              <div>{{firstName}} {{lastName}}</div>
-              <strong>Age:</strong> 
-              <div>{{age}}</div>
-              <strong>Location</strong> 
-              <div><i class="fa-solid fa-location-dot"></i> {{state}}, {{country}}</div>
-            </script>
+            <strong>Name:</strong>
+            <div>{{firstName}} {{lastName}}</div>
+            <strong>Age:</strong> 
+            <div>{{age}}</div>
+            <strong>Location</strong> 
+            <div><i class="fa-solid fa-location-dot"></i> {{state}}, {{country}}</div>
           </div>
+        </script>
+
+        <div class="buttons">
+          <button class="btn clear-btn" onclick="clearLocalStorage()">
+            <i class="fa-solid fa-trash"></i>
+            <div class="popup">Profile Deleted.</div>
+          </button>
+          <button class="btn reload-btn" onclick="loadNewPageData()">
+            <i class="fa-solid fa-rotate-right"></i>
+          </button>
+          <button class="btn download-btn" onclick="savePageDataToStorage()">
+            <i class="fa-solid fa-download"></i>
+            <div class="popup">Profile Saved.</div>
+          </button>
+          <button class="btn upload-btn" onclick="loadPageDataFromStorage()">
+            <i class="fa-solid fa-upload"></i>
+            <div class="popup">Save Profile First.</div>
+          </button>
         </div>
 
       </div>
@@ -94,8 +95,14 @@
       </script>
     </div>
 
-
-
+    <div class="quote">
+      <h3>Favorite Quote</h>
+      <script id="quote-template" type="text/x-handlebars-template">  
+        <blockquote>"{{quote}}"</blockquote>
+        <cite> - {{author}}</cite>
+      </script>
+    </div>
+    <hr/>
 
     <div class="pokemon">
       <script id="pokemon-template" type="text/x-handlebars-template">
@@ -104,19 +111,6 @@
         <p>- {{name}}</p>
       </script>
     </div>
-    <hr/>
-
-    <div class="quote">
-      <h3>Favorite Quote</h>
-      <script id="quote-template" type="text/x-handlebars-template">  
-
-        <blockquote>
-          "{{quote}}"
-        </blockquote>
-        <cite> - {{author}}</cite>
-      </script>
-    </div>
-    <hr/>
 
     <script src="Model.js"></script>
     <script src="Renderer.js"></script>
