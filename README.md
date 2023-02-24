@@ -1,9 +1,22 @@
 ﻿# Random Profile Page Generator
 
 ### Use of promises using multiple APIs
-### Use of handlebars, conditional rendering 
+### Use of handlebars, conditional rendering
 
 Demo: https://juadhamdan.github.io/javascript-promises-api-rupg-project/
+
+```
+## APIs: 
+Random User Generator API: https://randomuser.me/documentation#format
+
+Random Kanye Quote Generator API: https://kanye.rest/
+(This API returns a random quote from Kanye West)
+
+PokeAPI: https://pokeapi.co/docs/v2 (pokemon fetch & image fetch)
+
+Bacon Ipsum API: https://baconipsum.com/json-api/ 
+(This API returns random text, like a Lorem Ipsum text generator, but it’s text about Meat.)
+```
 
 
 ### This app is implememnted using the MVC Design Pattern
