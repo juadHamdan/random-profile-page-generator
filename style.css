@@ -28,6 +28,7 @@ body {
 .app-container{
   width: min(900px, 100%);
   min-width: 500px;
+  padding-bottom: 50px;
 }
 
 

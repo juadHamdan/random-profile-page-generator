@@ -107,9 +107,11 @@
 
     <div class="pokemon">
       <script id="pokemon-template" type="text/x-handlebars-template">
-        <h3>Favorite Pokemon:</h3>
+        <div>
+          <h3>Favorite Pokemon:</h3>
+          <p>- {{name}}</p>
+        </div>
         <img src={{imageUrl}} alt="My Favorite Pokemon" width="100" height="100">
-        <p>- {{name}}</p>
       </script>
     </div>
 

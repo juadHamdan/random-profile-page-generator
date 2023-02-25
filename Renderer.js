@@ -21,7 +21,6 @@ class Renderer {
     }
     hideFriends(){
         $('.friends-active').empty()
-
     }
     showFriends(){
         $('.friends-passive').empty()
