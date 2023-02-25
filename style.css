@@ -151,7 +151,7 @@ body {
 .about-text{
   padding: 0 10px 10px 10px;
   word-wrap: break-word;
-  height: max(400px, 50vh);
+  height: max(400px, 40vh);
   overflow-y: scroll;
 }
 
