@@ -14,6 +14,11 @@
 </head>
 <body>
   <div class="app-container">
+    <div class="alert-container">
+      <div class="alert"></div>
+    </div>
+
+
     <div class="profile-container">
       <div class="profile-background"></div>
       <p class="header header-text">Profile</p>
@@ -50,18 +55,15 @@
         <div class="buttons">
           <button class="btn clear-btn" onclick="clearLocalStorage()">
             <i class="fa-solid fa-trash"></i>
-            <div class="popup">Profile Deleted.</div>
           </button>
           <button class="btn reload-btn" onclick="loadNewPageData()">
             <i class="fa-solid fa-rotate-right"></i>
           </button>
           <button class="btn download-btn" onclick="savePageDataToStorage()">
             <i class="fa-solid fa-download"></i>
-            <div class="popup">Profile Saved.</div>
           </button>
           <button class="btn upload-btn" onclick="loadPageDataFromStorage()">
             <i class="fa-solid fa-upload"></i>
-            <div class="popup">Save Profile First.</div>
           </button>
         </div>
 

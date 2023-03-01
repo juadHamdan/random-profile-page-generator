@@ -12,7 +12,7 @@ class Renderer {
     renderAbout(about) {
         this.handleBarHelper('#about-template', about, '.about')
     }
-    renderMainUser(user) {
+    renderMainUserDetails(user) {
         this.handleBarHelper('#main-user-template', user, '.profile')
         this.renderEmail({email: user.email})
     }

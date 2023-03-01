@@ -1,4 +1,4 @@
-class MainUser{
+class MainUserDetails{
     constructor(imageUrl, firstName, lastName, state, country, age, email){
         this.imageUrl = imageUrl
         this.firstName = firstName
@@ -41,26 +41,23 @@ class About{
 
 function getAbout(){
     return apiManager.fetchAbout().then(data => {
-        const about = new About(data[0])
-        return about
+        return new About(data[0])
     })
 }
 
 function getPokemonData(){
     return apiManager.fetchPokemonData().then(data => {
-        const pokemonData = new PokemonData(data.sprites.front_default, apiManager.currentPokemonName)
-        return pokemonData
+        return new PokemonData(data.sprites.front_default, apiManager.currentPokemonName)
     })
 }
 
 function getFavoriteQuoteData(){
     return apiManager.fetchKanyeQuote().then(data => {
-        const favoriteQuoteData = new FavoriteQuote(data.quote)
-        return favoriteQuoteData
+        return new FavoriteQuote(data.quote)
     })
 }
 
-function getMainUser(){    
+function getMainUserDetails(){    
     return apiManager.fetchUserData().then(data => {
         const userData = data.results[0]
         const imageUrl = userData.picture.large
@@ -70,16 +67,13 @@ function getMainUser(){
         const country = userData.location.country
         const age = userData.dob.age
         const email = userData.email
-
-        const mainUser = new MainUser(imageUrl, firstName, lastName, state, country, age, email)
-        return mainUser
+        return new MainUserDetails(imageUrl, firstName, lastName, state, country, age, email)
     })
 }
 
 function getFriend(){
     return apiManager.fetchUserData().then(data => {
         const userData = data.results[0]
-        const friend = new Friend(userData.name.first, userData.name.last)
-        return friend
+        return new Friend(userData.name.first, userData.name.last)
     })
 }

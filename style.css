@@ -15,6 +15,27 @@
   --theme-color: #004d40;
 }
 
+.alert-container{
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+}
+.alert{
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  color: white;
+  background-color: var(--theme-color);
+  filter: brightness(85%);
+  border: 2px solid black;
+  padding: 20px 40px;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
 
 body {
   font-family: 'Roboto';
@@ -44,25 +65,6 @@ body {
   cursor: pointer;
   filter: brightness(75%);
 }
-
-.btn > .popup{
-  visibility: hidden;
-  position: absolute;
-  top: -35px;
-  right: -32.5px;
-  font-size: 1rem;
-  border-radius: 5px;
-  width: max-content;
-
-  padding: 5px 10px;
-  color: white;
-  font-weight: bold; 
-  background-color: var(--theme-color);
-  font-family: 'Roboto';
-}
-
-
-
 
 
 .header-text{

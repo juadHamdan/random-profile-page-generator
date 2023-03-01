@@ -14,9 +14,9 @@ const clearPopupJqueryObject = $(".clear-btn > .popup")
 const apiManager = new APIManager()
 const renderer = new Renderer()
 
-class PageData{
+class Profile{
     constructor(){
-        this.mainUser = {}
+        this.mainUserDetails = {}
         this.about = ""
         this.favoriteQuoteData = {}
         this.pokemonData = {}
@@ -24,9 +24,9 @@ class PageData{
     }
     
     loadNewPage(){
-        getMainUser().then(mainUser => {
-            this.mainUser = mainUser
-            renderer.renderMainUser(mainUser)
+        getMainUserDetails().then(mainUserDetails => {
+            this.mainUserDetails = mainUserDetails
+            renderer.renderMainUserDetails(mainUserDetails)
         })
         getAbout().then(about => {
             this.about = about
@@ -79,7 +79,7 @@ class PageData{
     }
 
     savePageDataToStorage(){
-        localStorage.setItem(MAIN_USER_STR, JSON.stringify(this.mainUser))
+        localStorage.setItem(MAIN_USER_STR, JSON.stringify(this.mainUserDetails))
         localStorage.setItem(ABOUT_STR, JSON.stringify(this.about))
         localStorage.setItem(FAVORITE_QUOTE_DATA_STR, JSON.stringify(this.favoriteQuoteData))
         localStorage.setItem(POKEMON_DATA_STR, JSON.stringify(this.pokemonData))
@@ -87,7 +87,7 @@ class PageData{
     }
 }
 
-const pageData = new PageData()
+const pageData = new Profile()
 
 const loadPageFromStorage = JSON.parse(localStorage.getItem(LOAD_PAGE_FROM_STORAGE_STR))
 loadPageFromStorage ? pageData.loadPageDataFromStorage() : pageData.loadNewPage()
@@ -111,12 +111,12 @@ function savePageDataToStorage(){
     pageData.savePageDataToStorage()
     localStorage.setItem("page-data-saved", JSON.stringify(true))
 
-    showTimedPopup(downloadPopupJqueryObject, 1000)
+    showTimedMessage("Profile Page Saved", 2000)
 }
 
 function loadPageDataFromStorage(){
     if(!JSON.parse(localStorage.getItem("page-data-saved"))){
-        showTimedPopup(uploadPopupJqueryObject, 2000)
+        showTimedMessage("Please Save Profile First", 3000)
         return
     }
 
@@ -126,7 +126,7 @@ function loadPageDataFromStorage(){
 
 function clearLocalStorage(){
     localStorage.clear()
-    showTimedPopup(clearPopupJqueryObject, 1000)
+    showTimedMessage("Profile Page Deleted", 2000)
     localStorage.setItem("page-data-saved", JSON.stringify(false))
 }
 
@@ -137,4 +137,20 @@ function hideFriends(){
 
 function showFriends(){
     pageData.showFriends()
+}
+
+
+
+
+
+const alertJqueryObject = $('.alert-container')
+const alertMessageJqueryObject = $('.alert')
+
+const showTimedMessage = (message, timer) => {
+    alertJqueryObject.css('visibility', 'visible')
+    alertMessageJqueryObject.text(message)
+
+    setTimeout(() => {
+        alertJqueryObject.css('visibility', 'hidden')
+    }, timer)
 }
